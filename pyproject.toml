@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=64", "wheel", "pybind11>=2.11"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flowbook"
+version = "0.1.0"
+description = "Limit order book microstructure lab: C++ matching engine, market-making strategies, and a from-scratch (NumPy only) transformer-style short-horizon price predictor."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = [
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+# flowbook.research's model is pure NumPy by design (see docs/RESEARCH.md) --
+# these are only for optional plotting/analysis around it, not the model itself.
+research = ["pandas>=2.0", "matplotlib>=3.7"]
+dev = ["pytest>=7.0", "pytest-cov"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
